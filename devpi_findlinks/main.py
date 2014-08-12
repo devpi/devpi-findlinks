@@ -1,4 +1,4 @@
-from devpi_common.url import URL
+from devpi_server.views import url_for_entrypath
 from operator import attrgetter
 from py.xml import html
 from pyramid.response import Response
@@ -42,18 +42,19 @@ def findlinks_view(context, request):
                     basenames.add(key)
                     all_links.append(link)
     links = []
-    for link in sorted(all_links, key=attrgetter('projectname', 'version')):
-        relpath = link.entrypath
-        href = "/" + relpath
-        href = URL(request.path).relpath(href)
-        if link.eggfragment:
-            href += "#egg=%s" % link.eggfragment
-        elif link.md5:
-            href += "#md5=%s" % link.md5
+    for link in sorted(all_links, key=attrgetter('basename')):
+        href = url_for_entrypath(request, link.entrypath)
+        entry = link.entry
+        if entry.eggfragment:
+            href += "#egg=%s" % entry.eggfragment
+        elif entry.md5:
+            href += "#md5=%s" % entry.md5
         links.extend([
-            "/".join(relpath.split("/", 2)[:2]) + " ",
+            "/".join(link.entrypath.split("/", 2)[:2]) + " ",
             html.a(link.basename, href=href),
             html.br(), "\n"])
+    if not links:
+        links = [html.p('No releases.')]
     return Response(html.html(
         html.head(
             html.title(title)),
