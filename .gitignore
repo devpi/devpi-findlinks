@@ -1,4 +1,7 @@
-.cache/
-.tox/
 *.egg-info
+*.sublime-*
+.cache/
+/.coverage
+/.tox/
+/dist/
 /htmlcov/
