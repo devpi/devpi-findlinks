@@ -47,8 +47,8 @@ def findlinks_view(context, request):
         entry = link.entry
         if entry.eggfragment:
             href += "#egg=%s" % entry.eggfragment
-        elif entry.md5:
-            href += "#md5=%s" % entry.md5
+        elif entry.hash_spec:
+            href += "#%s" % entry.hash_spec
         links.extend([
             "/".join(link.entrypath.split("/", 2)[:2]) + " ",
             html.a(link.basename, href=href),
