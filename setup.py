@@ -39,7 +39,7 @@ setup(
         'devpi_server': [
             "devpi-findlinks = devpi_findlinks.main"]},
     install_requires=[
-        'devpi-server>=2.2.0'],
+        'devpi-server>=3.0.0.dev0'],
     include_package_data=True,
     zip_safe=False,
     packages=['devpi_findlinks'])
