@@ -22,15 +22,15 @@ def devpiserver_pyramid_configure(config, pyramid_config):
 def findlinks_view(context, request):
     title = "%s: all package links without root/pypi" % (context.stage.name)
     projectnames = set()
-    for stage, names in context.stage.op_sro("list_projectnames_perstage"):
+    for stage, names in context.stage.op_sro("list_projects_perstage"):
         if stage.ixconfig["type"] == "mirror":
             continue
         projectnames.update(names)
     all_links = []
     basenames = set()
     for projectname in sorted(projectnames):
-        for stage, res in context.stage.op_sro_check_pypi_whitelist(
-                "get_releaselinks_perstage", projectname=projectname):
+        for stage, res in context.stage.op_sro_check_mirror_whitelist(
+                "get_releaselinks_perstage", project=projectname):
             if stage.ixconfig["type"] == "mirror":
                 continue
             for link in res:
