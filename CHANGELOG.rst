@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.0 - Unreleased
+2.0.0 - 2016-12-06
 ------------------
 
 - fixes for devpi-server 3.0.0, older versions aren't supported anymore
