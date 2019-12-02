@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0.1 - Unreleased
+------------------
+
+- fix use of eggfragment for devpi-server >= 5.0.0.
+
+
 2.0.0 - 2016-12-06
 ------------------
 

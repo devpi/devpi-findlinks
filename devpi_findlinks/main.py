@@ -34,7 +34,7 @@ def findlinks_view(context, request):
             if stage.ixconfig["type"] == "mirror":
                 continue
             for link in res:
-                if link.eggfragment:
+                if getattr(link, 'eggfragment', None):
                     key = link.eggfragment
                 else:
                     key = link.basename
@@ -45,7 +45,7 @@ def findlinks_view(context, request):
     for link in sorted(all_links, key=attrgetter('basename')):
         href = url_for_entrypath(request, link.entrypath)
         entry = link.entry
-        if entry.eggfragment:
+        if getattr(entry, 'eggfragment', None):
             href += "#egg=%s" % entry.eggfragment
         elif entry.hash_spec:
             href += "#%s" % entry.hash_spec
