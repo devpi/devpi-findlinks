@@ -6,6 +6,10 @@ Changelog
 
 - fix use of eggfragment for devpi-server >= 5.0.0.
 
+- dropped testing with Python 2.6 and Python 3.4
+
+- added testing with Python 3.6, 3.7 and 3.8
+
 
 2.0.0 - 2016-12-06
 ------------------
