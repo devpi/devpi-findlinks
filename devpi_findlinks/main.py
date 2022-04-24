@@ -1,8 +1,12 @@
 from devpi_server.views import url_for_entrypath
 from operator import attrgetter
+from pluggy import HookimplMarker
 from py.xml import html
 from pyramid.response import Response
 from pyramid.view import view_config
+
+
+server_hookimpl = HookimplMarker("devpiserver")
 
 
 def includeme(config):
@@ -12,6 +16,7 @@ def includeme(config):
     config.scan()
 
 
+@server_hookimpl
 def devpiserver_pyramid_configure(config, pyramid_config):
     # by using include, the package name doesn't need to be set explicitly
     # for registrations of static views etc

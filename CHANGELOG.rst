@@ -1,11 +1,13 @@
 Changelog
 =========
 
-3.0.0 - Unreleased
+3.0.0 - 2022-04-24
 ------------------
 
 - Drop support for Python < 3.7. Support for Python versions will be dropped
   with their respective end of lives.
+
+- Fix plugin registration with pluggy >= 1.0.0.
 
 
 2.0.1 - 2019-12-02
