@@ -34,12 +34,13 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python"] + [
             "Programming Language :: Python :: %s" % x
-            for x in "2 3 2.7 3.5 3.6 3.7 3.8".split()],
+            for x in "3 3.7 3.8 3.9 3.10".split()],
     entry_points={
         'devpi_server': [
             "devpi-findlinks = devpi_findlinks.main"]},
     install_requires=[
         'devpi-server>=3.0.0'],
     include_package_data=True,
+    python_requires='>=3.7',
     zip_safe=False,
     packages=['devpi_findlinks'])

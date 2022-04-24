@@ -1,6 +1,13 @@
 Changelog
 =========
 
+3.0.0 - Unreleased
+------------------
+
+- Drop support for Python < 3.7. Support for Python versions will be dropped
+  with their respective end of lives.
+
+
 2.0.1 - 2019-12-02
 ------------------
 
