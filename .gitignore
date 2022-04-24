@@ -3,5 +3,10 @@
 .cache/
 /.coverage
 /.tox/
+/bin/
+/build/
 /dist/
 /htmlcov/
+/include/
+/lib/
+/pip-selfcheck.json
