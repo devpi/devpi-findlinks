@@ -13,9 +13,11 @@ jobs:
 
     strategy:
       matrix:
-        python-version:
-          - "3.7"
-          - "3.10"
+        include:
+          - python-version: "3.7"
+            tox-envs: "py37"
+          - python-version: "3.10"
+            tox-envs: "py310"
 
     steps:
       - uses: "actions/checkout@v4"
@@ -28,10 +30,10 @@ jobs:
           python -VV
           python -m site
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install --upgrade virtualenv tox tox-gh-actions
+          python -m pip install --upgrade virtualenv tox
 
       - name: "Run tox targets for ${{ matrix.python-version }}"
         run: |
           set -xe -o nounset
           python -m tox -a -vv
-          python -m tox -v -- -v --color=yes
+          python -m tox -v -e ${{ matrix.tox-envs }} -- -v --color=yes
