@@ -6,6 +6,10 @@ Changelog
 
 - Replace usage of py.xml.html with string templates and html.escape.
 
+- Drop support for Python < 3.8.
+
+- Add support for Python 3.12.
+
 
 3.0.0 - 2022-04-24
 ------------------
