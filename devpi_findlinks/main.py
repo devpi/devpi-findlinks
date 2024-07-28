@@ -1,7 +1,7 @@
 from devpi_server.views import url_for_entrypath
+from html import escape
 from operator import attrgetter
 from pluggy import HookimplMarker
-from py.xml import html
 from pyramid.response import Response
 from pyramid.view import view_config
 
@@ -54,15 +54,18 @@ def findlinks_view(context, request):
             href += "#egg=%s" % entry.eggfragment
         elif entry.hash_spec:
             href += "#%s" % entry.hash_spec
-        links.extend([
-            "/".join(link.entrypath.split("/", 2)[:2]) + " ",
-            html.a(link.basename, href=href),
-            html.br(), "\n"])
-    if not links:
-        links = [html.p('No releases.')]
-    return Response(html.html(
-        html.head(
-            html.title(title)),
-        html.body(
-            html.h1(title), "\n",
-            links)).unicode(indent=2))
+        relpath = "/".join(link.entrypath.split("/", 2)[:2])
+        links.append(
+            f'{escape(relpath)} <a href="{escape(href)}">{escape(link.basename)}</a><br/>\n')
+    links = (
+        ''.join(str(x) for x in links)
+        if links else
+        '\n    <p>No releases.</p>')
+    body = (
+        f"<html>\n"
+        f"  <head>\n"
+        f"    <title>{escape(title)}</title></head>\n"
+        f"  <body>\n"
+        f"    <h1>{escape(title)}</h1>\n"
+        f"{links}</body></html>")
+    return Response(body)
