@@ -9,6 +9,13 @@ from pyramid.view import view_config
 server_hookimpl = HookimplMarker("devpiserver")
 
 
+def get_entry_hash_spec(entry):
+    return (
+        entry.best_available_hash_spec
+        if hasattr(entry, 'best_available_hash_spec') else
+        entry.hash_spec)
+
+
 def includeme(config):
     config.add_route(
         "findlinks",
@@ -52,8 +59,8 @@ def findlinks_view(context, request):
         entry = link.entry
         if getattr(entry, 'eggfragment', None):
             href += "#egg=%s" % entry.eggfragment
-        elif entry.hash_spec:
-            href += "#%s" % entry.hash_spec
+        elif get_entry_hash_spec(entry):
+            href += "#%s" % get_entry_hash_spec(entry)
         relpath = "/".join(link.entrypath.split("/", 2)[:2])
         links.append(
             f'{escape(relpath)} <a href="{escape(href)}">{escape(link.basename)}</a><br/>\n')
