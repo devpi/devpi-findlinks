@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.1 - Unreleased
+3.0.1 - 2024-08-04
 ------------------
 
 - Replace usage of py.xml.html with string templates and html.escape.
