@@ -22,7 +22,7 @@ jobs:
           - python-version: "3.14"
             tox-envs: "py314"
           - python-version: "3.8"
-            tox-envs: "py38-server520"
+            tox-envs: "py38-server610"
 
     steps:
       - uses: "actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd" # v6.0.2

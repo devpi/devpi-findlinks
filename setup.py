@@ -39,7 +39,7 @@ setup(
         for x in "3 3.8 3.9 3.10 3.11 3.12 3.13 3.14".split()
     ],
     entry_points={"devpi_server": ["devpi-findlinks = devpi_findlinks.main"]},
-    install_requires=["devpi-server>=5.2.0"],
+    install_requires=["devpi-server>=6.10.0"],
     include_package_data=True,
     python_requires=">=3.8",
     zip_safe=False,

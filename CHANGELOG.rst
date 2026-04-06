@@ -4,7 +4,8 @@ Changelog
 3.0.2 - Unreleased
 ------------------
 
-- Support for Python 3.13 and 3.14.
+- Require at least devpi-server 6.10.0.
+
 
 
 3.0.1 - 2024-08-04
