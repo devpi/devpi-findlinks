@@ -6,6 +6,7 @@ Changelog
 
 - Require at least devpi-server 6.10.0.
 
+- Support upcoming devpi-server 7.0.0.
 
 
 3.0.1 - 2024-08-04

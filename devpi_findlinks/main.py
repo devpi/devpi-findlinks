@@ -35,7 +35,7 @@ def findlinks_view(context, request):
     title = "%s: all package links without root/pypi" % (context.stage.name)
     projects = set()
     for stage, names in context.stage.op_sro("list_projects_perstage"):
-        if stage.ixconfig["type"] == "mirror":
+        if stage.ixconfig["type"] in {"mirror", "remote"}:
             continue
         projects.update(names)
     all_links = []
@@ -43,7 +43,7 @@ def findlinks_view(context, request):
     for project in sorted(projects):
         for stage, res in context.stage.op_sro_check_mirror_whitelist(
                 "get_releaselinks_perstage", project=project):
-            if stage.ixconfig["type"] == "mirror":
+            if stage.ixconfig["type"] in {"mirror", "remote"}:
                 continue
             for link in res:
                 if getattr(link, 'eggfragment', None):
