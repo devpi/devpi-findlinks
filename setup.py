@@ -10,7 +10,7 @@ def get_version(path):
         for line in f:
             if '__version__' in line:
                 parts = line.split("=")
-                return parts[1].split("'")[1]
+                return parts[1].split('"')[1]
 
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -32,15 +32,16 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: System Administrators",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python"] + [
-            "Programming Language :: Python :: %s" % x
-            for x in "3 3.8 3.9 3.10 3.11 3.12".split()],
-    entry_points={
-        'devpi_server': [
-            "devpi-findlinks = devpi_findlinks.main"]},
-    install_requires=[
-        'devpi-server>=5.2.0'],
+        "Programming Language :: Python",
+    ]
+    + [
+        "Programming Language :: Python :: %s" % x
+        for x in "3 3.8 3.9 3.10 3.11 3.12 3.13 3.14".split()
+    ],
+    entry_points={"devpi_server": ["devpi-findlinks = devpi_findlinks.main"]},
+    install_requires=["devpi-server>=5.2.0"],
     include_package_data=True,
-    python_requires='>=3.8',
+    python_requires=">=3.8",
     zip_safe=False,
-    packages=['devpi_findlinks'])
+    packages=["devpi_findlinks"],
+)
