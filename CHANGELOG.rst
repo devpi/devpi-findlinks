@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.2 - Unreleased
+3.1.0 - 2026-05-08
 ------------------
 
 - Require at least devpi-server 6.10.0.
